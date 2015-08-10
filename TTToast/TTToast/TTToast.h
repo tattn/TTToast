@@ -25,5 +25,12 @@
 #ifndef TTToast_TTToast_h
 #define TTToast_TTToast_h
 
+typedef NS_ENUM(int, TTToastPosition) {
+    TTToastPositionMiddle = 0x01,
+    TTToastPositionTop = 0x02,
+    TTToastPositionBottom = 0x04,
+    TTToastPositionLeft = 0x08,
+    TTToastPositionRight = 0x10
+};
 
 #endif
