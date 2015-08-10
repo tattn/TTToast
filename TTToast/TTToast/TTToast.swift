@@ -35,7 +35,7 @@ import UIKit
         case Right = 16
     }
     
-    @objc(TTToastConfig) public class Config {
+    @objc(TTToastConfig) public class Config: NSObject {
         // Appearance
         public var maxWidth = CGFloat(0.8)
         public var paddingHorizontal = CGFloat(10.0)
@@ -62,8 +62,8 @@ import UIKit
         public var position = Position.Middle.rawValue
         
         
-        func copy() -> Config {
-            var newInstance = Config()
+        func duplicate() -> Config {
+            let newInstance = Config()
             newInstance.maxWidth = config.maxWidth
             newInstance.paddingHorizontal = config.paddingHorizontal
             newInstance.paddingVertical = config.paddingVertical
@@ -89,7 +89,7 @@ import UIKit
     }
     
     static var config = Config()
-    private var _config = config.copy()
+    private var _config = config.duplicate()
     
     private func setup(message: String, parent: UIView) {
         self.backgroundColor = _config.backgroundColor
@@ -113,7 +113,7 @@ import UIKit
         msgLabel.sizeToFit()
         self.addSubview(msgLabel)
         
-        var size = CGSizeMake(  msgLabel.frame.width + _config.paddingHorizontal * 2,
+        let size = CGSizeMake(  msgLabel.frame.width + _config.paddingHorizontal * 2,
                                 msgLabel.frame.height + _config.paddingVertical * 2)
         self.frame = CGRectMake(0, 0, size.width, size.height)
         

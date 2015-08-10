@@ -1,5 +1,8 @@
 # TTToast
 
+[![CocoaPods Status](https://cocoapod-badges.herokuapp.com/v/TTToast/badge.png)](https://cocoapods.org/?q=tttoast)
+![License](https://cocoapod-badges.herokuapp.com/l/TTToast/badge.png)
+
 A simple toast library written by Swift
 
 <a target="_blank" href="https://raw.githubusercontent.com/tattn/TTToast/assets/tttoast.gif">
@@ -54,6 +57,28 @@ Toast.show(self.view, message: "Hello world\nToast test") {(config) in
 // global settings
 Toast.config.backgroundColor = UIColor.blackColor()
 Toast.config.textColor = UIColor.whiteColor()
+```
+
+## Objective-C
+
+If you use this library in Objective-C, you need to import the following:
+
+```objc
+#import <TTToast/TTToast.h>
+#import <TTToast/TTToast-Swift.h> // auto-generated header file
+```
+
+and set [Build Settings]-[Build Options]-[Embeedded Content Contains Swift Code] to `Yes`.
+
+### Examples for Objective-C
+
+```objc
+[TTToast show:self.view message:@"Hello world"];
+
+[TTToast show:self.view message:@"Hello world" config:^(TTToastConfig* config) {
+	config.backgroundColor = [UIColor blackColor];
+	config.position = TTToastPositionTop | TTToastPositionLeft
+}];
 ```
 
 

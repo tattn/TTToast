@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = VC
         
-        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let button = UIButton(type: UIButtonType.System)
         button.frame = CGRectMake(0, 0, 300, 60);
         button.setTitle("Button", forState: UIControlState.Normal)
         button.addTarget(self, action: "touchUpButton:", forControlEvents: UIControlEvents.TouchUpInside)
