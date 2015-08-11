@@ -27,10 +27,10 @@ Add manually:
 
 ```swift
 // simple
-Toast.show(self.view, message: "Hello world\nToast test")
+Toast.show("Hello world\nToast test")
 
 // customization
-Toast.show(self.view, message: "Hello world\nToast test") {(config) in
+Toast.show("Hello world\nToast test", view:self.view) {(config) in
     // appearance
     config.maxWidth = CGFloat(0.8)
     config.paddingHorizontal = CGFloat(10.0)
@@ -73,9 +73,9 @@ and set [Build Settings]-[Build Options]-[Embeedded Content Contains Swift Code]
 ### Examples for Objective-C
 
 ```objc
-[TTToast show:self.view message:@"Hello world"];
+[TTToast show:@"Hello world"];
 
-[TTToast show:self.view message:@"Hello world" config:^(TTToastConfig* config) {
+[TTToast show:message:@"Hello world" view:self.view config:^(TTToastConfig* config) {
 	config.backgroundColor = [UIColor blackColor];
 	config.position = TTToastPositionTop | TTToastPositionLeft
 }];
