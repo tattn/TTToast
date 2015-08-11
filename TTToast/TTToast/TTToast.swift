@@ -169,7 +169,10 @@ import UIKit
         if (window == nil) {
             window = UIApplication.sharedApplication().windows[0]
         }
-        let viewController = window?.rootViewController
+        var viewController = window?.rootViewController
+        while (viewController!.presentedViewController != nil) {
+            viewController = viewController!.presentedViewController;
+        }
         return viewController!.view
     }
     
