@@ -136,12 +136,20 @@ import UIKit
     
 // MARK: - shows
     
-    public class func show(parent: UIView, message: String) {
-        show(parent, message: message, config: { _ in })
+    public class func show(message: String) {
+        self.show(message, view: topView())
     }
     
-    public class func show(parent: UIView, message: String, config: (Config) -> Void) {
-        for subview in parent.subviews {
+    public class func show(message: String, view: UIView) {
+        show(message, view:view, config: { _ in })
+    }
+    
+    public class func show(message: String, config: (Config) -> Void) {
+        show(message, view: topView(), config: config)
+    }
+    
+    public class func show(message: String, view: UIView, config: (Config) -> Void) {
+        for subview in view.subviews {
             if subview is Toast {
                 subview.removeFromSuperview()
             }
@@ -149,11 +157,20 @@ import UIKit
         
         let toast = Toast()
         config(toast._config)
-        parent.addSubview(toast)
-        parent.bringSubviewToFront(toast)
-        toast.setup(message, parent: parent)
+        view.addSubview(toast)
+        view.bringSubviewToFront(toast)
+        toast.setup(message, parent: view)
         
         toast.fadeInOut()
+    }
+    
+    private class func topView() -> UIView {
+        var window = UIApplication.sharedApplication().keyWindow
+        if (window == nil) {
+            window = UIApplication.sharedApplication().windows[0]
+        }
+        let viewController = window?.rootViewController
+        return viewController!.view
     }
     
 // MARK: - animations
