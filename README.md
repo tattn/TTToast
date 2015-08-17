@@ -75,7 +75,7 @@ and set [Build Settings]-[Build Options]-[Embeedded Content Contains Swift Code]
 ```objc
 [TTToast show:@"Hello world"];
 
-[TTToast show:message:@"Hello world" view:self.view config:^(TTToastConfig* config) {
+[TTToast show:@"Hello world" config:^(TTToastConfig* config) {
 	config.backgroundColor = [UIColor blackColor];
 	config.position = TTToastPositionTop | TTToastPositionLeft
 }];
